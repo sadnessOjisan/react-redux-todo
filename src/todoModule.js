@@ -9,16 +9,7 @@ const UNCHECK_TODO = "UNCHECK_TODO";
 const ACTIVATE_FILTER = "ACTIVATE_FILTER";
 const INACTIVATE_FILTER = "INACTIVATE_FILTER";
 
-const actionTypes = {
-  ADD_TODO,
-  CHECK_TODO,
-  UNCHECK_TODO,
-  ACTIVATE_FILTER,
-  INACTIVATE_FILTER
-};
-
 // action cretor
-
 type TAddTodoAction = { type: typeof ADD_TODO, payload: string };
 type TCheckTodoAction = { type: typeof CHECK_TODO, payload: string };
 type TUncheckTodoAction = { type: typeof UNCHECK_TODO, payload: string };

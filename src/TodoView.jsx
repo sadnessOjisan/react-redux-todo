@@ -29,7 +29,14 @@ class TodoView extends React.Component<Props> {
   }
 
   render() {
-    const { todos, checkTodo, uncheckTodo } = this.props;
+    const {
+      todos,
+      checkTodo,
+      uncheckTodo,
+      isFilter,
+      activateFilter,
+      inactivateFilter
+    } = this.props;
     return (
       <center>
         <h1>TODO</h1>
@@ -37,16 +44,22 @@ class TodoView extends React.Component<Props> {
           <input name="task" />
           <button type="submit">送信</button>
         </form>
+        <button onClick={isFilter ? inactivateFilter : activateFilter}>
+          filterは{isFilter ? "on" : "off"}です。
+        </button>
+        <p>残りタスクは{todos.filter(todo => !todo.isDone).length}個です。</p>
         <p>
-          {todos.map(todo => (
-            <Todo
-              id={todo.id}
-              task={todo.task}
-              isDone={todo.isDone}
-              checkTodo={checkTodo}
-              uncheckTodo={uncheckTodo}
-            />
-          ))}
+          {todos
+            .filter(todo => (isFilter ? todo.isDone : true))
+            .map(todo => (
+              <Todo
+                id={todo.id}
+                task={todo.task}
+                isDone={todo.isDone}
+                checkTodo={checkTodo}
+                uncheckTodo={uncheckTodo}
+              />
+            ))}
         </p>
       </center>
     );

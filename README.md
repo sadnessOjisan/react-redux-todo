@@ -17,7 +17,17 @@ $ yarn run start
 
 ```
 
-その後、 `http://localhost:3000` にアクセス。
+その後、 `/dist/index.html` にアクセス。
+
+## level
+
+lv1: todo 作成
+
+lv2: done のチェック
+
+lv3: フィルターの作成
+
+lv4 todo の削除
 
 ## 解説
 
