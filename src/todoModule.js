@@ -1,6 +1,6 @@
 // @flow
 
-import { type Todo } from "./typedef/Todo";
+import { type TTodo } from "./typedef/Todo";
 
 // action type
 const ADD_TODO = "ADD_TODO";
@@ -19,7 +19,7 @@ const actionTypes = {
 
 // action cretor
 
-type TAddTodoAction = { type: typeof ADD_TODO, payload: Todo };
+type TAddTodoAction = { type: typeof ADD_TODO, payload: string };
 type TCheckTodoAction = { type: typeof CHECK_TODO, payload: string };
 type TUncheckTodoAction = { type: typeof UNCHECK_TODO, payload: string };
 type TActivateFilterAction = { type: typeof ACTIVATE_FILTER };
@@ -32,8 +32,8 @@ type TAction =
   | TActivateFilterAction
   | TInactivateFilterAction;
 
-const addTodo = (todo: Todo): TAddTodoAction => {
-  return { type: ADD_TODO, payload: todo };
+const addTodo = (task: string): TAddTodoAction => {
+  return { type: ADD_TODO, payload: task };
 };
 
 const checkTodo = (id: string): TCheckTodoAction => {
@@ -62,7 +62,7 @@ export const actionCreators = {
 
 // state
 export type TState = {|
-  +todos: Array<Todo>,
+  +todos: Array<TTodo>,
   +isFilter: boolean
 |};
 
@@ -73,22 +73,29 @@ const initialState = {
 
 // reducer
 const reducer = (state: TState = initialState, action: TAction): TState => {
-  let checkedId: string, checkedTodos: Todo[];
+  let checkedId: string, checkedTodos: TTodo[];
   switch (action.type) {
     case ADD_TODO:
-      const addedTodo = action.payload;
-      return { ...state, todos: [...state.todos, addedTodo] };
+      const task = action.payload;
+      const newTodo: TTodo = {
+        id: Math.random() // randomなidを生成しています
+          .toString(36)
+          .slice(-8),
+        task: task,
+        isDone: false
+      };
+      return { ...state, todos: [...state.todos, newTodo] };
     case CHECK_TODO:
       checkedId = action.payload;
       checkedTodos = state.todos.map(
-        (todo: Todo): Todo =>
+        (todo: TTodo): TTodo =>
           todo.id === checkedId ? { ...todo, isDone: true } : todo
       );
       return { ...state, todos: checkedTodos };
     case UNCHECK_TODO:
       checkedId = action.payload;
       checkedTodos = state.todos.map(
-        (todo: Todo): Todo =>
+        (todo: TTodo): TTodo =>
           todo.id === checkedId ? { ...todo, isDone: false } : todo
       );
       return { ...state, todos: checkedTodos };

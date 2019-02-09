@@ -1,12 +1,12 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import Counter from "./counter";
+import TodoView from "./TodoView";
 import store from "./redux";
 
 ReactDOM.render(
   <Provider store={store}>
-    <Counter />
+    <TodoView />
   </Provider>,
   document.getElementById("root")
 );

@@ -1,8 +1,7 @@
 // @flow
 
 import { createStore } from "redux";
-import reducer from "./countModule";
-import { type TState as TCountState } from "./countModule";
+import reducer, { type TState as TCountState } from "./todoModule";
 
 export type TStore = TCountState;
 
