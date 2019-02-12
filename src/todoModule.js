@@ -23,32 +23,24 @@ type TAction =
   | TActivateFilterAction
   | TInactivateFilterAction;
 
-const addTodo = (task: string): TAddTodoAction => {
+export const addTodo = (task: string): TAddTodoAction => {
   return { type: ADD_TODO, payload: task };
 };
 
-const checkTodo = (id: string): TCheckTodoAction => {
+export const checkTodo = (id: string): TCheckTodoAction => {
   return { type: CHECK_TODO, payload: id };
 };
 
-const uncheckTodo = (id: string): TUncheckTodoAction => {
+export const uncheckTodo = (id: string): TUncheckTodoAction => {
   return { type: UNCHECK_TODO, payload: id };
 };
 
-const activateFilter = (): TActivateFilterAction => {
+export const activateFilter = (): TActivateFilterAction => {
   return { type: ACTIVATE_FILTER };
 };
 
-const inactivateFilter = (): TInactivateFilterAction => {
+export const inactivateFilter = (): TInactivateFilterAction => {
   return { type: INACTIVATE_FILTER };
-};
-
-export const actionCreators = {
-  addTodo,
-  checkTodo,
-  uncheckTodo,
-  activateFilter,
-  inactivateFilter
 };
 
 // state

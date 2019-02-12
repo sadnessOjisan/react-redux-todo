@@ -3,22 +3,34 @@
 import * as React from "react";
 import { bindActionCreators, type Dispatch } from "redux";
 import { connect } from "react-redux";
-import { actionCreators } from "./todoModule";
+import {
+  addTodo,
+  checkTodo,
+  uncheckTodo,
+  activateFilter,
+  inactivateFilter
+} from "./todoModule";
 import { type TStore } from "./redux";
 import Todo from "./Todo";
 import { type TTodo } from "./typedef/Todo";
 
-type Props = {
-  // mapStateToProps
+type TMapStateToProps = {|
   todos: Array<TTodo>,
-  isFilter: boolean,
-  // mapDispatchToProps
-  addTodo: typeof actionCreators.addTodo,
-  checkTodo: typeof actionCreators.checkTodo,
-  uncheckTodo: typeof actionCreators.uncheckTodo,
-  activateFilter: typeof actionCreators.activateFilter,
-  inactivateFilter: typeof actionCreators.inactivateFilter
-};
+  isFilter: boolean
+|};
+
+type TMapDispatchToProps = {|
+  addTodo: typeof addTodo,
+  checkTodo: typeof checkTodo,
+  uncheckTodo: typeof uncheckTodo,
+  activateFilter: typeof activateFilter,
+  inactivateFilter: typeof inactivateFilter
+|};
+
+type Props = {|
+  ...TMapStateToProps,
+  ...TMapDispatchToProps
+|};
 
 class TodoView extends React.Component<Props> {
   handleSubmit(e) {
@@ -70,16 +82,13 @@ const mapStateToProps = (state: TStore) => {
   return { todos: state.todos, isFilter: state.isFilter };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<*>) => {
+const mapDispatchToProps = (dispatch: Dispatch<*>): TMapDispatchToProps => {
   return {
-    addTodo: bindActionCreators(actionCreators.addTodo, dispatch),
-    checkTodo: bindActionCreators(actionCreators.checkTodo, dispatch),
-    uncheckTodo: bindActionCreators(actionCreators.uncheckTodo, dispatch),
-    activateFilter: bindActionCreators(actionCreators.activateFilter, dispatch),
-    inactivateFilter: bindActionCreators(
-      actionCreators.inactivateFilter,
-      dispatch
-    )
+    addTodo: task => dispatch(addTodo(task)),
+    checkTodo: id => dispatch(checkTodo(id)),
+    uncheckTodo: id => dispatch(uncheckTodo(id)),
+    activateFilter: () => dispatch(activateFilter()),
+    inactivateFilter: () => dispatch(inactivateFilter())
   };
 };
 
