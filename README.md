@@ -1,5 +1,7 @@
 # react-redux-todo
 
+url: https://serene-knuth-943719.netlify.com/
+
 ## 概要
 
 react-redux でカウントアップ、カウンドダウンを行う。なお react との接続は行い、react で作った view から redux を動かす
