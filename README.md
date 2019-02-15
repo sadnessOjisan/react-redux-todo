@@ -1,13 +1,15 @@
 # react-redux-todo
 
-| Contents | URL                                       |
-| -------- | ----------------------------------------- |
-| app      | https://serene-knuth-943719.netlify.com/  |
-| esdoc    | https://reverent-curie-b7e403.netlify.com |
+| Contents                                            | URL                                                           | 備考                                                     |
+| --------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------- |
+| 最新のコード                                        | https://github.com/sadnessOjisan/react-redux-todo             | -                                                        |
+| [Flow](https://flow.org/en/) で型がつけられたコード | https://github.com/sadnessOjisan/react-redux-todo/tree/v1.1.0 | commit hash は`a828751a5e4a91f575c324c060ec7798fd373e45` |
+| app                                                 | https://serene-knuth-943719.netlify.com/                      | -                                                        |
+| esdoc                                               | https://reverent-curie-b7e403.netlify.com                     | -                                                        |
 
 ## 概要
 
-[react-todo](https://github.com/sadnessOjisan/todo_react)を react-redux で作り直したもの。todo の作成、チェック、フィルターができる。
+[react-todo](https://github.com/sadnessOjisan/todo_react)を react-redux で作り直したものです。todo の作成、チェック、フィルターができます。
 
 ## 使い方
 
@@ -36,17 +38,15 @@ $ npm run docgen
 $ open ./.esdoc/index.html
 ```
 
-## 課題 level
-
-lv1: todo 作成
-
-lv2: done のチェック
-
-lv3: フィルターの作成
-
-lv4 todo の削除
-
 ## なぜ Flow がサンプルコードに入っているか
 
 react-redux では様々な関数が登場したり、redux に読ませるための関数を自作する場面が多く出て来ます。
 どのように呼ばれ、何が渡され、何が返されるのかということを読めれば、コードを追いかけられるはずなので、型を入れました。TS じゃないのは、学習コストを考慮してのことです。
+
+Flow の型を読みたい場合は、
+
+```
+$ git reset --hard a828751a5e4a91f575c324c060ec7798fd373e45
+```
+
+もしくは、 v1.1.0 のタグをみてください。(https://github.com/sadnessOjisan/react-redux-todo/tree/v1.1.0)
