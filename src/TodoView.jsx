@@ -62,7 +62,7 @@ class TodoView extends React.Component {
         <p>残りタスクは{todos.filter(todo => !todo.isDone).length}個です。</p>
         <p>
           {todos
-            .filter(todo => (isFilter ? todo.isDone : true))
+            .filter(todo => (isFilter ? !todo.isDone : true))
             .map(todo => (
               <Todo
                 id={todo.id}
@@ -78,10 +78,20 @@ class TodoView extends React.Component {
   }
 }
 
+/**
+ * todos の state と todos コンポーネントを紐づける役割を持つ
+ * @param {Store} state todosコンポーネントに伝えたいstateを宣言する
+ * @returns {TMapStateToProps} どのpropsにアクセスするかの設定を描いたファイル
+ */
 const mapStateToProps = state => {
   return { todos: state.todos, isFilter: state.isFilter };
 };
 
+/**
+ * counter の store にアクションをdispatchする役割を持つ
+ * @param {Dispatch} dispatch dispatcher
+ * @returns {TMapDispatchToProps} dispathcerを持つオブジェクト
+ */
 const mapDispatchToProps = dispatch => {
   return {
     addTodo: task => dispatch(addTodo(task)),

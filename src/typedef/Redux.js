@@ -45,3 +45,21 @@
  * @typedef {Object} TInactivateFilter
  * @property {'INACTIVATE_FILTER'} type action type
  */
+
+/**
+ * mapStateToProps の返り値の型
+ * @typedef {Object} TMapStateToProps
+ * @property {String} id task固有の UUID (https://ja.wikipedia.org/wiki/UUID)
+ * @property {String} task todo内容
+ * @property {Boolean} isDone todoの達成状況
+ */
+
+/**
+ * mapDipatchToProps の返り値の型
+ * @typedef {Object} TMapDispatchToProps
+ * @property {void=>void} activateFilter - フィルターをONにするactionをdispatchする。
+ * @property {string=>void} addTodo - todoを追加するactionをdispatchする
+ * @property {string => void} checkTodo - todoをundone->doneに変更するactionをdispatchする
+ * @property {void=>void} inactivateFilter - フィルターをOFFにするactionをdispatchする。
+ * @property {string => void} uncheckTodo - todoをdone->undoneに変更するactionをdispatchする
+ */
