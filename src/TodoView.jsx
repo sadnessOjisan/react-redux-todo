@@ -1,7 +1,5 @@
-// @flow
-
 import * as React from "react";
-import { bindActionCreators, type Dispatch } from "redux";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import {
   addTodo,
@@ -10,29 +8,9 @@ import {
   activateFilter,
   inactivateFilter
 } from "./todoModule";
-import { type TStore } from "./redux";
 import Todo from "./Todo";
-import { type TTodo } from "./typedef/Todo";
 
-type TMapStateToProps = {|
-  todos: Array<TTodo>,
-  isFilter: boolean
-|};
-
-type TMapDispatchToProps = {|
-  addTodo: typeof addTodo,
-  checkTodo: typeof checkTodo,
-  uncheckTodo: typeof uncheckTodo,
-  activateFilter: typeof activateFilter,
-  inactivateFilter: typeof inactivateFilter
-|};
-
-type Props = {|
-  ...TMapStateToProps,
-  ...TMapDispatchToProps
-|};
-
-class TodoView extends React.Component<Props> {
+class TodoView extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const { addTodo } = this.props;
@@ -78,11 +56,11 @@ class TodoView extends React.Component<Props> {
   }
 }
 
-const mapStateToProps = (state: TStore) => {
+const mapStateToProps = state => {
   return { todos: state.todos, isFilter: state.isFilter };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<*>): TMapDispatchToProps => {
+const mapDispatchToProps = dispatch => {
   return {
     addTodo: task => dispatch(addTodo(task)),
     checkTodo: id => dispatch(checkTodo(id)),

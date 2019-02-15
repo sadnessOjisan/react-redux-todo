@@ -1,7 +1,3 @@
-// @flow
-
-import { type TTodo } from "./typedef/Todo";
-
 // action type
 const ADD_TODO = "ADD_TODO";
 const CHECK_TODO = "CHECK_TODO";
@@ -9,45 +5,27 @@ const UNCHECK_TODO = "UNCHECK_TODO";
 const ACTIVATE_FILTER = "ACTIVATE_FILTER";
 const INACTIVATE_FILTER = "INACTIVATE_FILTER";
 
-// action cretor
-type TAddTodoAction = { type: typeof ADD_TODO, payload: string };
-type TCheckTodoAction = { type: typeof CHECK_TODO, payload: string };
-type TUncheckTodoAction = { type: typeof UNCHECK_TODO, payload: string };
-type TActivateFilterAction = { type: typeof ACTIVATE_FILTER };
-type TInactivateFilterAction = { type: typeof INACTIVATE_FILTER };
-
-type TAction =
-  | TAddTodoAction
-  | TCheckTodoAction
-  | TUncheckTodoAction
-  | TActivateFilterAction
-  | TInactivateFilterAction;
-
-export const addTodo = (task: string): TAddTodoAction => {
+export const addTodo = task => {
   return { type: ADD_TODO, payload: task };
 };
 
-export const checkTodo = (id: string): TCheckTodoAction => {
+export const checkTodo = id => {
   return { type: CHECK_TODO, payload: id };
 };
 
-export const uncheckTodo = (id: string): TUncheckTodoAction => {
+export const uncheckTodo = id => {
   return { type: UNCHECK_TODO, payload: id };
 };
 
-export const activateFilter = (): TActivateFilterAction => {
+export const activateFilter = () => {
   return { type: ACTIVATE_FILTER };
 };
 
-export const inactivateFilter = (): TInactivateFilterAction => {
+export const inactivateFilter = () => {
   return { type: INACTIVATE_FILTER };
 };
 
 // state
-export type TState = {|
-  +todos: Array<TTodo>,
-  +isFilter: boolean
-|};
 
 const initialState = {
   todos: [],
@@ -55,31 +33,27 @@ const initialState = {
 };
 
 // reducer
-const reducer = (state: TState = initialState, action: TAction): TState => {
-  let checkedId: string, checkedTodos: TTodo[];
+const reducer = (state = initialState, action) => {
+  let checkedId, checkedTodos;
   switch (action.type) {
     case ADD_TODO:
       const task = action.payload;
-      const newTodo: TTodo = {
-        id: Math.random() // randomなidを生成しています
-          .toString(36)
-          .slice(-8),
+      const newTodo = {
+        id: _genUUID(),
         task: task,
         isDone: false
       };
       return { ...state, todos: [...state.todos, newTodo] };
     case CHECK_TODO:
       checkedId = action.payload;
-      checkedTodos = state.todos.map(
-        (todo: TTodo): TTodo =>
-          todo.id === checkedId ? { ...todo, isDone: true } : todo
+      checkedTodos = state.todos.map(todo =>
+        todo.id === checkedId ? { ...todo, isDone: true } : todo
       );
       return { ...state, todos: checkedTodos };
     case UNCHECK_TODO:
       checkedId = action.payload;
-      checkedTodos = state.todos.map(
-        (todo: TTodo): TTodo =>
-          todo.id === checkedId ? { ...todo, isDone: false } : todo
+      checkedTodos = state.todos.map(todo =>
+        todo.id === checkedId ? { ...todo, isDone: false } : todo
       );
       return { ...state, todos: checkedTodos };
     case ACTIVATE_FILTER:
@@ -89,6 +63,12 @@ const reducer = (state: TState = initialState, action: TAction): TState => {
     default:
       return initialState;
   }
+};
+
+const _genUUID = () => {
+  return Math.random() // randomなidを生成しています
+    .toString(36)
+    .slice(-8);
 };
 
 export default reducer;

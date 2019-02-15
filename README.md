@@ -1,27 +1,42 @@
 # react-redux-todo
 
-url: https://serene-knuth-943719.netlify.com/
+| Contents | URL                                       |
+| -------- | ----------------------------------------- |
+| app      | https://serene-knuth-943719.netlify.com/  |
+| esdoc    | https://reverent-curie-b7e403.netlify.com |
 
 ## 概要
 
-react-redux でカウントアップ、カウンドダウンを行う。なお react との接続は行い、react で作った view から redux を動かす
+[react-todo](https://github.com/sadnessOjisan/todo_react)を react-redux で作り直したもの。todo の作成、チェック、フィルターができる。
 
-機能: action に応じて、カウントを増減させる
+## 使い方
 
-[react-redux-count-handson](https://github.com/sadnessOjisan/react-redux-count-handson)の続編です
-
-## 起動
+起動
 
 ```
 $ npm install
 
-$ yarn run start
+$ npm run build
+
+$ open ./dist/index.html
 
 ```
 
-その後、 `/dist/index.html` にアクセス。
+もしくは、
 
-## level
+```
+$ npm run start
+```
+
+ローカルでドキュメントを読みたい
+
+```
+$ npm run docgen
+
+$ open ./.esdoc/index.html
+```
+
+## 課題 level
 
 lv1: todo 作成
 
@@ -31,6 +46,7 @@ lv3: フィルターの作成
 
 lv4 todo の削除
 
-## 解説
-
 ## なぜ Flow がサンプルコードに入っているか
+
+react-redux では様々な関数が登場したり、redux に読ませるための関数を自作する場面が多く出て来ます。
+どのように呼ばれ、何が渡され、何が返されるのかということを読めれば、コードを追いかけられるはずなので、型を入れました。TS じゃないのは、学習コストを考慮してのことです。

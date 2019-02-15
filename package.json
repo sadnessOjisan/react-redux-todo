@@ -14,6 +14,11 @@
     "@babel/plugin-transform-flow-strip-types": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
+    "esdoc": "^1.1.0",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-jsx-plugin": "^1.0.0",
+    "esdoc-react-plugin": "^1.0.1",
+    "esdoc-standard-plugin": "^1.0.0",
     "flow-bin": "^0.92.1",
     "flow-typed": "^2.5.1",
     "webpack": "^4.29.3",
@@ -22,8 +27,7 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack --watch",
-    "flow": "flow",
-    "flow-typed": "flow-typed"
+    "docgen": "esdoc -c '.esdoc.json'"
   },
   "repository": {
     "type": "git",

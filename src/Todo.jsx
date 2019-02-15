@@ -1,17 +1,7 @@
-// @flow
-
 import * as React from "react";
 import { checkTodo, uncheckTodo } from "./todoModule";
 
-type Props = {
-  id: string,
-  task: string,
-  isDone: boolean,
-  checkTodo: typeof checkTodo,
-  uncheckTodo: typeof uncheckTodo
-};
-
-class Todo extends React.Component<Props> {
+class Todo extends React.Component {
   render() {
     const { id, task, isDone, checkTodo, uncheckTodo } = this.props;
     return (
