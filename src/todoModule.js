@@ -1,38 +1,67 @@
 // action type
+
+/**
+ * addTodo 用のaction識別子(type)
+ */
 const ADD_TODO = "ADD_TODO";
+
+/**
+ * checkTodo 用のaction識別子(type)
+ */
 const CHECK_TODO = "CHECK_TODO";
+
+/**
+ * uncheckTodo 用のaction識別子(type)
+ */
 const UNCHECK_TODO = "UNCHECK_TODO";
+
+/**
+ * activateFilter 用のaction識別子(type)
+ */
 const ACTIVATE_FILTER = "ACTIVATE_FILTER";
+
+/**
+ * inactivateFilter 用のaction識別子(type)
+ */
 const INACTIVATE_FILTER = "INACTIVATE_FILTER";
 
-export const addTodo = task => {
+const addTodo = task => {
   return { type: ADD_TODO, payload: task };
 };
 
-export const checkTodo = id => {
+const checkTodo = id => {
   return { type: CHECK_TODO, payload: id };
 };
 
-export const uncheckTodo = id => {
+const uncheckTodo = id => {
   return { type: UNCHECK_TODO, payload: id };
 };
 
-export const activateFilter = () => {
+const activateFilter = () => {
   return { type: ACTIVATE_FILTER };
 };
 
-export const inactivateFilter = () => {
+const inactivateFilter = () => {
   return { type: INACTIVATE_FILTER };
 };
 
-// state
-
+/**
+ * countのstateです。
+ * reducerから更新されます。
+ * @type {Store}
+ */
 const initialState = {
   todos: [],
   isFilter: false
 };
 
-// reducer
+/**
+ * reducerはstateを変更する役割を持ちます。古いstateとactionを元に、新しいstateを返します。
+ * stateの破壊的変更は禁止されているので、新しいstateオブジェクトを作り直して返しています。
+ * @param {Store} state 更新前のstate
+ * @param {Action} action 更新内容を伝えるメッセージ
+ * @return {Store} 新しいstate
+ */
 const reducer = (state = initialState, action) => {
   let checkedId, checkedTodos;
   switch (action.type) {
@@ -65,10 +94,29 @@ const reducer = (state = initialState, action) => {
   }
 };
 
+/**
+ * UUIDを生成します
+ * @return {String} UUID
+ */
 const _genUUID = () => {
   return Math.random() // randomなidを生成しています
     .toString(36)
     .slice(-8);
 };
 
+// esdocで仕様書を生成するためにexport. アプリを動かすためならば、この処理は不要(reducerのexportは必要)
+export {
+  ADD_TODO,
+  CHECK_TODO,
+  UNCHECK_TODO,
+  ACTIVATE_FILTER,
+  INACTIVATE_FILTER,
+  addTodo,
+  checkTodo,
+  uncheckTodo,
+  activateFilter,
+  inactivateFilter,
+  initialState,
+  _genUUID
+};
 export default reducer;
