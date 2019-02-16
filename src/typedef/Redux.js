@@ -14,7 +14,11 @@
  * @typedef {Object} TAction
  * @property {String} type actionの識別子
  * @property {mixed?} payload actionのデータ
- * @example const exampleAction = {type: 'HOGE', payload: 'sample_data'}
+ * @example const addTodoAction = {type: 'ADD_TODO', payload: 'コーヒーを買う'}
+ * @example const checkTodoAction = {type: 'CHECK_TODO', payload: 'fu23gvghhh42'}
+ * @example const uncheckTodoAction = {type: 'UNCHECK_TODO', payload: 'fu23gvghhh42'}
+ * @example const activateFilterAction = {type: 'ACTIVATE_FILTER'}
+ * @example const inactivateFilterAction = {type: 'INACTIVATE_FILTER'}
  */
 
 /**

@@ -90,7 +90,7 @@ const mapStateToProps = state => {
 
 /**
  * mapDispatchToProps の役割は、どのアクションをコンポーネントからdispatchできるようにするかを設定することです。
- * ここでは、counter の store にアクションをdispatchする役割を持ちます。
+ * ここでは、todo情報を保持する store にアクションをdispatchする役割を持ちます。
  * @param {Dispatch} dispatch dispatcher
  * @returns {TMapDispatchToProps} dispathcerを持つオブジェクト
  */

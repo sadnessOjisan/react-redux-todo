@@ -24,7 +24,7 @@ const ACTIVATE_FILTER = "ACTIVATE_FILTER";
 const INACTIVATE_FILTER = "INACTIVATE_FILTER";
 
 /**
- * ADD_TODO アクションを生成するための、action creator
+ * ADD_TODO アクションを生成するための、[action creator](https://redux.js.org/basics/actions#action-creators)です。
  * @param {String} task タスクの内容 ex) コーヒーを買う
  * @returns {TAddTodo} ADD_TODO 用のaction
  * @example {type: 'ADD_TODO', payload: '柔軟剤を買う'}
@@ -34,8 +34,8 @@ const addTodo = task => {
 };
 
 /**
- * CHECK_TODO アクションを生成するための、action creator。
- * taskにチェックを入れたことをreducerに伝える時に利用する。
+ * CHECK_TODO アクションを生成するための、[action creator](https://redux.js.org/basics/actions#action-creators)です。。
+ * taskにチェックを入れたことをreducerに伝える時に利用します。
  * @param {String} id UUID
  * @returns {TCheckTodo} CHECK_TODO 用のaction
  * @example {type: 'CHECK_TODO', payload: '9f0tgh340'}
@@ -45,8 +45,8 @@ const checkTodo = id => {
 };
 
 /**
- * UNCHECK_TODO アクションを生成するための、action creator。
- * taskにチェックを入れたことをreducerに伝える時に利用する。
+ * UNCHECK_TODO アクションを生成するための、[action creator](https://redux.js.org/basics/actions#action-creators)です。。
+ * taskにチェックを入れたことをreducerに伝える時に利用します。
  * @param {String} id UUID
  * @returns {TCheckTodo} UNCHECK_TODO 用のaction
  * @example {type: 'UNCHECK_TODO', payload: '9f0tgh340'}
@@ -56,8 +56,8 @@ const uncheckTodo = id => {
 };
 
 /**
- * ACTIVATE_FILTER アクションを生成するための、action creator。
- * isDone filterをonにしたことをreducerに伝える時に利用する。
+ * ACTIVATE_FILTER アクションを生成するための、[action creator](https://redux.js.org/basics/actions#action-creators)です。。
+ * isDone filterをonにしたことをreducerに伝える時に利用します。
  * @returns {TActivateFilter} ACTIVATE_FILTER 用のaction
  * @example {type: 'ACTIVATE_FILTER'}
  */
@@ -66,8 +66,8 @@ const activateFilter = () => {
 };
 
 /**
- * INACTIVATE_FILTER アクションを生成するための、action creator。
- * isDone filterをoffにしたことをreducerに伝える時に利用する。
+ * INACTIVATE_FILTER アクションを生成するための、[action creator](https://redux.js.org/basics/actions#action-creators)です。。
+ * isDone filterをoffにしたことをreducerに伝える時に利用します。
  * @returns {TInactivateFilter} UNCHECK_TODO 用のaction
  * @example {type: 'INACTIVATE_FILTER'}
  */
@@ -76,8 +76,8 @@ const inactivateFilter = () => {
 };
 
 /**
- * countのstateです。
- * reducerから更新されます。
+ * todo modlue の初期stateです。
+ * このアプリはこのstateのみをstoreに持つので、stateの型はTStoreです。
  * @type {TStore}
  */
 const initialState = {
@@ -98,6 +98,8 @@ const initialState = {
  * // これは、spread演算子の特性上、{a: 1, b: 2, c: 3, c:4}となるがオブジェクトの同一キーは上書きされるためである。
  * ```
  *
+ * またdefaultのcase節ではinitialStateを返さないと、store生成時にundefinedがreturnされるため注意が必要です。
+ * 参考: [Redux入門 3日目 Reduxの基本・Reducers(公式ドキュメント和訳)](https://qiita.com/kiita312/items/7fdce94912d6d9c801f8)
  * @param {TStore} state 更新前のstate
  * @param {TAction} action 更新内容を伝えるメッセージ
  * @return {TStore} 新しいstate
