@@ -16,7 +16,7 @@ import Todo from "./Todo";
  * @reactProps {string=>void} addTodo - todoを追加するactionをdispatchする
  * @reactProps {string => void} checkTodo - todoをundone->doneに変更するactionをdispatchする
  * @reactProps {void=>void} inactivateFilter - フィルターをOFFにするactionをdispatchする。
- * @reactProps {Todo[]} todos - todo一覧
+ * @reactProps {TTodo[]} todos - todo一覧
  * @reactProps {string => void} uncheckTodo - todoをdone->undoneに変更するactionをdispatchする
  * @reactProps {Boolean} isFilter - filteを提供しているかのフラグ
  */
@@ -79,8 +79,9 @@ class TodoView extends React.Component {
 }
 
 /**
- * todos の state と todos コンポーネントを紐づける役割を持つ
- * @param {Store} state todosコンポーネントに伝えたいstateを宣言する
+ * mapStateToProps の役割は、storeのどのプロパティをコンポーネントで使うかを設定することです。
+ * ここでは、todos の state と todos コンポーネントを紐づける役割を持たせるように定義しました。
+ * @param {TStore} state todosコンポーネントに伝えたいstateを宣言する
  * @returns {TMapStateToProps} どのpropsにアクセスするかの設定を描いたファイル
  */
 const mapStateToProps = state => {
@@ -88,7 +89,8 @@ const mapStateToProps = state => {
 };
 
 /**
- * counter の store にアクションをdispatchする役割を持つ
+ * mapDispatchToProps の役割は、どのアクションをコンポーネントからdispatchできるようにするかを設定することです。
+ * ここでは、counter の store にアクションをdispatchする役割を持ちます。
  * @param {Dispatch} dispatch dispatcher
  * @returns {TMapDispatchToProps} dispathcerを持つオブジェクト
  */

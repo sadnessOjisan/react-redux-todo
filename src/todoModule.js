@@ -78,7 +78,7 @@ const inactivateFilter = () => {
 /**
  * countのstateです。
  * reducerから更新されます。
- * @type {Store}
+ * @type {TStore}
  */
 const initialState = {
   todos: [],
@@ -88,9 +88,19 @@ const initialState = {
 /**
  * reducerはstateを変更する役割を持ちます。古いstateとactionを元に、新しいstateを返します。
  * stateの破壊的変更は禁止されているので、新しいstateオブジェクトを作り直して返しています。
- * @param {Store} state 更新前のstate
- * @param {Action} action 更新内容を伝えるメッセージ
- * @return {Store} 新しいstate
+ * スプレッド演算子を使うと、新しいオブジェクトを簡単に作れるので、採用しています。
+ *
+ * (例)
+ * ```
+ * const sample = {a: 1, b: 2, c: 3}
+ * const updateSample = {...sample, c:4}
+ * // updateSample -> {a: 1, b: 2, c:4}
+ * // これは、spread演算子の特性上、{a: 1, b: 2, c: 3, c:4}となるがオブジェクトの同一キーは上書きされるためである。
+ * ```
+ *
+ * @param {TStore} state 更新前のstate
+ * @param {TAction} action 更新内容を伝えるメッセージ
+ * @return {TStore} 新しいstate
  * @example {todos:[{id:'08ryu03f',task:'コーヒー買う', isDone: false},{id:'23rh08f',task:'本を買う', isDone: true}],isFilter:true}
  */
 const reducer = (state = initialState, action) => {
@@ -126,7 +136,7 @@ const reducer = (state = initialState, action) => {
 };
 
 /**
- * UUIDを生成します
+ * UUIDを生成します。
  * @return {String} UUIDのようなランダムな文字列
  * @example '2ktzm7mh'
  */
@@ -136,7 +146,8 @@ const _genUUID = () => {
     .slice(-8);
 };
 
-// esdocで仕様書を生成するためにexport. アプリを動かすためならば、この処理は不要(reducerのexportは必要)
+// esdocで仕様書を生成するためにexport.
+// アプリを動かすためならば、この処理は不要(reducerのexportは必要)
 export {
   ADD_TODO,
   CHECK_TODO,

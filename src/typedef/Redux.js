@@ -1,53 +1,57 @@
 /**
- * reduxのstore. アプリ全体のstateを管理する. このアプリケーションではcountをstateとして持つ.
- * @typedef {Object} Store
- * @property {Todo[]} todos todoオブジェクトの配列
+ * reduxのstoreです。アプリ全体のstateを管理します。
+ * このアプリケーションではcountをstateとして持ちます。
+ * @typedef {Object} TStore
+ * @property {TTodo[]} todos todoオブジェクトの配列
  * @property {Boolean} isFilter fliterの状態
  */
 
 /**
- * reduxのaction.
- * @typedef {Object} Action
+ * reducerが受け取るActionの型です。
+ * もっと正確に言うならば、
+ * TAddTodo, TCheckTodo, TUncheckTodo, TActivateFilter, TInactivateFilter
+ * の[Union Types](https://flow.org/en/docs/types/unions/)です。
+ * @typedef {Object} TAction
  * @property {String} type actionの識別子
  * @property {mixed?} payload actionのデータ
  * @example const exampleAction = {type: 'HOGE', payload: 'sample_data'}
  */
 
 /**
- * ADD_TODO アクションの型
+ * ADD_TODO アクションの型です。
  * @typedef {Object} TAddTodo
  * @property {'ADD_TODO'} type action type
  * @property {String} payload フォームから追加されたタスク内容
  */
 
 /**
- * CHECK_TODO アクションの型
+ * CHECK_TODO アクションの型です。
  * @typedef {Object} TCheckTodo
  * @property {'CHECK_TODO'} type action type
  * @property {String} payload taskのid. UUID
  */
 
 /**
- * UNCHECK_TODO アクションの型
+ * UNCHECK_TODO アクションの型です。
  * @typedef {Object} TUncheckTodo
  * @property {'UNCHECK_TODO'} type action type
  * @property {String} payload taskのid. UUID
  */
 
 /**
- * ACTIVATE_FILTER アクションの型
+ * ACTIVATE_FILTER アクションの型です。
  * @typedef {Object} TActivateFilter
  * @property {'ACTIVATE_FILTER'} type action type
  */
 
 /**
- * INACTIVATE_FILTER アクションの型
+ * INACTIVATE_FILTER アクションの型です。
  * @typedef {Object} TInactivateFilter
  * @property {'INACTIVATE_FILTER'} type action type
  */
 
 /**
- * mapStateToProps の返り値の型
+ * mapStateToProps 関数の返り値の型です。
  * @typedef {Object} TMapStateToProps
  * @property {String} id task固有の UUID (https://ja.wikipedia.org/wiki/UUID)
  * @property {String} task todo内容
@@ -55,7 +59,7 @@
  */
 
 /**
- * mapDipatchToProps の返り値の型
+ * mapDipatchToProps 関数の返り値の型です。
  * @typedef {Object} TMapDispatchToProps
  * @property {void=>void} activateFilter - フィルターをONにするactionをdispatchする。
  * @property {string=>void} addTodo - todoを追加するactionをdispatchする
