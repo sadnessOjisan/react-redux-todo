@@ -24,34 +24,34 @@
 /**
  * ADD_TODO アクションの型です。
  * @typedef {Object} TAddTodo
- * @property {'ADD_TODO'} type action type
- * @property {String} payload フォームから追加されたタスク内容
+ * @property {'ADD_TODO'} type action typeのオブジェクトです。 リテラル値 'ADD_TODO'
+ * @property {String} payload タスク内容
  */
 
 /**
  * CHECK_TODO アクションの型です。
  * @typedef {Object} TCheckTodo
- * @property {'CHECK_TODO'} type action type
+ * @property {'CHECK_TODO'} type action typeのオブジェクトです。 リテラル値 'CHECK_TODO'
  * @property {String} payload taskのid. UUID
  */
 
 /**
  * UNCHECK_TODO アクションの型です。
  * @typedef {Object} TUncheckTodo
- * @property {'UNCHECK_TODO'} type action type
+ * @property {'UNCHECK_TODO'} type action typeのオブジェクトです。 リテラル値 'UNCHECK_TODO'
  * @property {String} payload taskのid. UUID
  */
 
 /**
  * ACTIVATE_FILTER アクションの型です。
  * @typedef {Object} TActivateFilter
- * @property {'ACTIVATE_FILTER'} type action type
+ * @property {'ACTIVATE_FILTER'} type action typeのオブジェクトです。 リテラル値 'ACTIVATE_FILTER'
  */
 
 /**
  * INACTIVATE_FILTER アクションの型です。
  * @typedef {Object} TInactivateFilter
- * @property {'INACTIVATE_FILTER'} type action type
+ * @property {'INACTIVATE_FILTER'} type action typeのオブジェクトです。 リテラル値 'INACTIVATE_FILTER'
  */
 
 /**
